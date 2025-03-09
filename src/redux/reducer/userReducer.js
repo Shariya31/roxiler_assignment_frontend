@@ -6,7 +6,7 @@ console.log(userData, 'reducer')
 const initialState = {
     user: userData.user || "",
     loading: true,
-    role: userData.user.role || "",
+    role: userData.user.role || "user",
     token: userData.token || ""
 }
 
