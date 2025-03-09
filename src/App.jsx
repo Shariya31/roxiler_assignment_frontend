@@ -21,7 +21,9 @@ const App = () => {
       <Suspense fallback={<h1>Loading...</h1>}>
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route element={<ProtectedRoute roles={['admin', 'store_owner', 'user']}/>}>
+            <Route path='/' element={<Home />} />
+          </Route>
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
@@ -36,7 +38,7 @@ const App = () => {
           </Route>
 
           {/* Store owner path */}
-          <Route element={<ProtectedRoute roles={['admin','store_owner']} />}>
+          <Route element={<ProtectedRoute roles={['admin', 'store_owner']} />}>
             <Route path='/admin/create-store' element={<CreateStore />} />
 
             <Route path='/owner/dashboard' element={<OwnerDashboard />} />

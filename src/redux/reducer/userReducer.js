@@ -1,35 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userData = JSON.parse(localStorage.getItem('userData')) || ""
-console.log(userData, 'reducer')
+const userData = JSON.parse(localStorage.getItem('userData')) || { user: null, token: null };
 
 const initialState = {
-    user: userData.user || "",
+    user: userData.user || null,
     loading: true,
-    role: userData.user.role || "user",
-    token: userData.token || ""
-}
+    role: userData.user?.role || "user", 
+    token: userData.token || null 
+};
 
 export const userSlice = createSlice({
     name: 'userReducer',
     initialState,
     reducers: {
         userExist: (state, action) => {
-            console.log(action.payload)
-            state.loading = false
+            console.log(action.payload);
+            state.loading = false;
             state.user = action.payload.user;
             state.token = action.payload.token;
-            state.role = action.payload.user.role;
-
+            state.role = action.payload.user.role; // Ensure payload has user.role
         },
-        userNotExist: (state, action) => {
-            state.loading = false
+        userNotExist: (state) => {
+            state.loading = false;
             state.user = null;
             state.token = null;
             state.role = null;
         }
     }
-})
+});
 
-export const { userExist, userNotExist } = userSlice.actions
-export default userSlice.reducer
+export const { userExist, userNotExist } = userSlice.actions;
+export default userSlice.reducer;

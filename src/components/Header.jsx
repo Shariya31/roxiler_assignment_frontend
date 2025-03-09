@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   // const {role, user:{name}} = useSelector(state => state.user)
   const userData = JSON.parse(localStorage.getItem('userData'))
-  const name = userData.user.name
-  const role = userData.user.role
+  const name = userData?.user?.name || ""
+  const role = userData?.user?.role || "user"
   const navigate = useNavigate();
   
   return (
@@ -18,7 +18,7 @@ const Header = () => {
       <button className='cursor-pointer hover:text-white ease-in-out duration-500' onClick={()=>navigate('/signup')}>Signup</button>
 
       {role === "admin" && <Link className='hover:text-white ease-in-out duration-500' to="/admin/dashboard">Admin Dashboard</Link>}
-      
+
       {role === "store_owner" && <Link className='hover:text-white ease-in-out duration-500' to="/owner/dashboard">Owner Dashboard</Link>}
       {/* <Link onClick={handleLogout}>Logout</Link> */}
       <button>{name}</button>
