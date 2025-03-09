@@ -6,8 +6,8 @@ console.log(userData, 'reducer')
 const initialState = {
     user: userData.user || "",
     loading: true,
-    role: userData.user.role,
-    token: userData.token
+    role: userData.user.role || "",
+    token: userData.token || ""
 }
 
 export const userSlice = createSlice({
