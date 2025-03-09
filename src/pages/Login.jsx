@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userExist, userNotExist } from "../redux/reducer/userReducer";
+import { server } from "../redux/store";
 
 const schema = yup.object().shape({
     email: yup
@@ -29,7 +30,7 @@ const Login = () => {
     const [success, setSuccess] = useState(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
+
     const {
         register,
         handleSubmit,
@@ -44,10 +45,12 @@ const Login = () => {
         setError(null);
         setSuccess(null);
         try {
-            const response = await axios.post("http://localhost:3001/api/auth/login", data);
+            const response = await axios.post(`${server}/api/auth/login`, data);
             setSuccess("Login successful!");
             console.log(response)
             dispatch(userExist(response.data))
+            localStorage.setItem("userData", JSON.stringify(response.data))
+            navigate('/')
         } catch (err) {
             setError(err.response?.data?.message || "An error occurred");
         } finally {
@@ -63,6 +66,25 @@ const Login = () => {
             </div>
 
             <div className="w-[70%] sm:w-[40%] lg:w-[40%] mx-auto p-4 bg-white shadow-md rounded-lg">
+                <div className="flex flex-col gap-4 w-full">
+                    <div>
+                        <h2>Admin</h2>
+                        <p>Email: abushariya31@gmail.com</p>
+                        <p>Password: Admin@pass123</p>
+                    </div>
+
+                    <div>
+                        <h2>Store_Owner</h2>
+                        <p>Email: storeowner@gmaiil.com</p>
+                        <p>Password: store@Owner123</p>
+                    </div>
+
+                    <div>
+                        <h2>Normal User</h2>
+                        <p>Email: nornaluser2@gmail.com</p>
+                        <p>Password: Normal@User123</p>
+                    </div>
+                </div>
                 <h2 className="text-xl font-bold mb-4">Login</h2>
                 {error && <p className="text-red-500 text-sm">{error}</p>}
                 {success && <p className="text-green-500 text-sm">{success}</p>}
@@ -103,7 +125,7 @@ const Login = () => {
                     >
                         {loading ? "Loging in..." : "Login"}
                     </button>
-                        <p className="cursor-pointer hover:text-red-700" onClick={()=>navigate('/forgot-password')}>Forgot password ? Click here</p>
+                    <p className="cursor-pointer hover:text-red-700" onClick={() => navigate('/forgot-password')}>Forgot password ? Click here</p>
                 </form>
             </div>
 

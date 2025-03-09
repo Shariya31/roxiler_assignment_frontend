@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
+import { server } from "../redux/store";
 
 const schema = yup.object().shape({
     email: yup
@@ -30,7 +31,7 @@ const ForgotPassword = () => {
         setError(null);
         setSuccess(null);
         try {
-            const response = await axios.post(" http://localhost:3001/api/auth/forgot-passowrd", data);
+            const response = await axios.post(`${server}/api/auth/forgot-passowrd`, data);
             setSuccess("Email sent successfully!");
             console.log(response)
         } catch (err) {

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
+import { server } from "../redux/store";
 
 const schema = yup.object().shape({
     name: yup
@@ -47,7 +48,7 @@ const Signup = () => {
         setError(null);
         setSuccess(null);
         try {
-            const response = await axios.post("http://localhost:3001/api/auth/register", data);
+            const response = await axios.post(`${server}/api/auth/register`, data);
             setSuccess("Registration successful!");
         } catch (err) {
             setError(err.response?.data?.message || "An error occurred");

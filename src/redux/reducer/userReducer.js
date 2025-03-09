@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const userData = JSON.parse(localStorage.getItem('userData'))
+console.log(userData, 'reducer')
+
 const initialState = {
-    user: null,
+    user: userData.user,
     loading: true,
-    role: null,
-    token: null
+    role: userData.user.role,
+    token: userData.token
 }
 
 export const userSlice = createSlice({

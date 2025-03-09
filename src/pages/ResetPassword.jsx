@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { server } from "../redux/store";
 
 const schema = yup.object().shape({
    password: yup
@@ -36,7 +37,7 @@ const ResetPassword = () => {
         setError(null);
         setSuccess(null);
         try {
-            const response = await axios.put(`http://localhost:3001/api/auth/reset-password/${token}`, data);
+            const response = await axios.put(`${server}/api/auth/reset-password/${token}`, data);
             setSuccess("Password reset successfully!");
             console.log(response)
         } catch (err) {
