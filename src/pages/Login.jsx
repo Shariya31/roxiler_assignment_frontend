@@ -61,12 +61,12 @@ const Login = () => {
 
     return (
         <div className="flex flex-wrap items-center justify-between gap-[2rem] max-w-full h-screen mx-auto bg-white shadow-md rounded-lg">
-            <div className="relative md:w-1/2 lg:w-1/2 h-full">
-                <img className="w-full h-full" src="https://plus.unsplash.com/premium_photo-1683134474181-8b88c82b6aa8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c3RvcmVzJTIwcmF0aW5nfGVufDB8fDB8fHww" alt="" />
+            <div className="relative w-full md:w-full lg:w-1/2 h-full md:h-60%">
+                <img className="w-full h-full object-cover" src="https://img.freepik.com/free-vector/hotel-booking-concept-flat-style_23-2148167146.jpg?ga=GA1.1.2136706286.1699891344&semt=ais_hybrid&w=740" alt="" />
             </div>
 
-            <div className="w-[70%] sm:w-[40%] lg:w-[40%] mx-auto p-4 bg-white shadow-md rounded-lg">
-                <div className="flex flex-col gap-4 w-full">
+            <div className="w-full md:w-[60%] lg:w-[40%] mx-auto p-4 bg-white shadow-md rounded-lg">
+                <div className="flex flex-col items-center gap-4 w-full">
                     <div>
                         <h2>Admin</h2>
                         <p>Email: abushariya31@gmail.com</p>

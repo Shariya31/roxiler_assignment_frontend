@@ -60,11 +60,11 @@ const Signup = () => {
 
     return (
         <div className="flex flex-wrap items-center justify-between gap-[2rem] max-w-full h-screen mx-auto bg-white shadow-md rounded-lg">
-            <div className="relative md:w-1/2 lg:w-1/2 h-full">
-                <img className="w-full h-full" src="https://plus.unsplash.com/premium_photo-1683134474181-8b88c82b6aa8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c3RvcmVzJTIwcmF0aW5nfGVufDB8fDB8fHww" alt="" />
+            <div className="relative w-full md:w-full lg:w-1/2 h-full">
+                <img className="w-full h-full object-cover" src="https://img.freepik.com/free-vector/hotel-booking-concept-flat-style_23-2148167146.jpg?ga=GA1.1.2136706286.1699891344&semt=ais_hybrid&w=740" alt="" />
             </div>
 
-            <div className="w-[70%] sm:w-[40%] lg:w-[40%] mx-auto p-4 bg-white shadow-md rounded-lg">
+            <div className="w-full sm:w-[70%] lg:w-[40%] mx-auto p-4 bg-white shadow-md rounded-lg">
                 <h2 className="text-xl font-bold mb-4">Register</h2>
                 {error && <p className="text-red-500 text-sm">{error}</p>}
                 {success && <p className="text-green-500 text-sm">{success}</p>}
