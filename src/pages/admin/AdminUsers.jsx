@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import getData from '../../hooks/getData';
 import Sidebar from '../../components/Sidebar';
 import { server } from '../../redux/store';
+import { Link } from 'react-router-dom';
 
 const AdminUsers = () => {
   const [searchText, setSearchText] = useState('');
@@ -88,6 +89,12 @@ const AdminUsers = () => {
               <option value="aesc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
+            <Link
+            to="/admin/create-user"
+            className="mt-4 md:mt-0 inline-block px-6 py-2 bg-white/20 rounded-full shadow-md text-white hover:bg-white/40 transition duration-300"
+          >
+            + Add User
+          </Link>
           </div>
         </div>
 

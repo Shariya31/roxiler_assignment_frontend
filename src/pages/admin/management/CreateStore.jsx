@@ -6,11 +6,12 @@ import * as yup from 'yup'
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { server } from '../../../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 const schema = yup.object().shape({
     name: yup
         .string()
-        .min(20, "Name must be at least 20 characters")
+        .min(10, "Name must be at least 10 characters")
         .max(60, "Name cannot exceed 60 characters")
         .required("Name is required"),
     address: yup
@@ -29,6 +30,8 @@ const CreateStore = () => {
     const [success, setSuccess] = useState(null)
     const [loading, setLoading] = useState(false)
     const { token } = useSelector(state => state.user);
+
+    const navigate = useNavigate();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
